@@ -1,0 +1,13 @@
+{
+  "name": "mars-moon-explorer",
+  "version": "1.0.0",
+  "description": "MARS × MOON — Interplanetary Scientific Data Explorer (NASA Space Apps Challenge)",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.mjs",
+    "snapshot": "node scripts/build-snapshot.mjs 2020 2035",
+    "test": "node --test tests/*.test.mjs"
+  }
+}

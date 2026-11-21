@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARS × MOON — Interplanetary Scientific Data Explorer</title>
+<meta name="description" content="Explore Mars and Earth's Moon with real NASA and JPL data: live Horizons ephemerides, a Mars–Moon distance calculator, 3D solar system, mission archive, NASA imagery and analytics.">
+<meta name="theme-color" content="#060b16">
+<meta property="og:title" content="MARS × MOON — Interplanetary Scientific Data Explorer">
+<meta property="og:description" content="Live JPL Horizons distances, NASA imagery and scientific comparisons of Mars and the Moon.">
+<meta property="og:image" content="assets/img/PIA24542.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='11' cy='16' r='8' fill='%23e2733a'/%3E%3Ccircle cx='24' cy='16' r='5' fill='%23c9ccd6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script type="importmap">
+{ "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="#/" aria-label="MARS × MOON home">
+      <span class="logo-mark" aria-hidden="true"><i class="lm-mars"></i><i class="lm-moon"></i></span>
+      <span class="logo-text">MARS <b>×</b> MOON</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#/" data-route="home">Dashboard</a>
+      <a href="#/mars" data-route="mars">Mars</a>
+      <a href="#/moon" data-route="moon">Moon</a>
+      <a href="#/distance" data-route="distance">Distance</a>
+      <a href="#/solar-system" data-route="solar-system">3D System</a>
+      <a href="#/compare" data-route="compare">Compare</a>
+      <a href="#/missions" data-route="missions">Missions</a>
+      <a href="#/gallery" data-route="gallery">Gallery</a>
+      <a href="#/analytics" data-route="analytics">Analytics</a>
+      <a href="#/sources" data-route="sources">Sources</a>
+    </nav>
+    <button class="icon-btn search-btn" id="searchBtn" aria-label="Search (press /)" title="Search (/)">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span class="kbd">/</span>
+    </button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <div class="logo-text small">MARS <b>×</b> MOON</div>
+      <p>Interplanetary Scientific Data Explorer · NASA Space Apps Challenge.<br>Data: NASA/JPL Horizons, NASA Open APIs, NASA Image and Video Library, NASA NSSDCA fact sheets.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#/sources">Data sources & methodology</a>
+      <a href="../" class="if-hosted">Mission Mars game & handbook</a>
+      <a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noopener">NASA media guidelines</a>
+    </div>
+    <p class="disclaimer">Not an official NASA product. NASA imagery is used under NASA's media usage guidelines; NASA does not endorse this project.</p>
+  </div>
+</footer>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="Search" hidden>
+  <div class="search-panel glass">
+    <div class="search-head">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="searchInput" type="search" placeholder="Search features, missions, properties, terms…" autocomplete="off" aria-label="Search query">
+      <button class="btn btn-sm btn-ghost" id="searchClose">Esc</button>
+    </div>
+    <ul class="search-results" id="searchResults" role="listbox"></ul>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

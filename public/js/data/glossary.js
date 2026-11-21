@@ -1,0 +1,23 @@
+// Plain-language definitions used by tooltips (<span class="term" data-term="…">).
+export const GLOSSARY = {
+  'ephemeris': 'A table of positions of celestial bodies at regular times. JPL Horizons computes them from numerically integrated solar-system models (e.g. DE441).',
+  'ICRF': 'International Celestial Reference Frame — a coordinate frame fixed to distant quasars, used as the standard for precise astronomy.',
+  'ecliptic': 'The plane of Earth\'s orbit around the Sun. "Ecliptic J2000" uses that plane as it was on 1 January 2000, 12:00 TT.',
+  'au': 'Astronomical unit: exactly 149 597 870.7 km, roughly the average Earth–Sun distance.',
+  'light-time': 'How long light (or a radio signal) takes to travel a distance: distance ÷ 299 792.458 km/s.',
+  'geometric distance': 'The straight-line separation between two bodies at the same instant — not the path a spacecraft would fly.',
+  'escape velocity': 'The minimum speed an object needs at the surface to leave a body\'s gravity without further propulsion (ignoring air drag).',
+  'sol': 'A Martian solar day: 24 h 39 min 35 s.',
+  'sidereal': 'Measured relative to the distant stars rather than the Sun.',
+  'synodic': 'Measured relative to the Sun as seen from another body — e.g. the time between identical Moon phases, or between Mars oppositions.',
+  'semi-major axis': 'Half the longest diameter of an elliptical orbit — the body\'s mean distance from what it orbits.',
+  'eccentricity': 'How stretched an orbit is: 0 is a perfect circle, values near 1 are very elongated.',
+  'tidal locking': 'When a body\'s rotation period equals its orbital period, so it always shows the same face to its partner.',
+  'regolith': 'The layer of loose, broken rock and dust covering solid bedrock, produced by impacts.',
+  'exosphere': 'An extremely thin "atmosphere" whose atoms almost never collide with each other.',
+  'permanently shadowed region': 'Crater floors near the lunar poles that never receive direct sunlight; they can trap water ice.',
+  'opposition': 'When Mars is directly opposite the Sun in Earth\'s sky — roughly when Earth and Mars are closest.',
+  'Hohmann transfer': 'The most energy-efficient two-impulse orbit between two circular orbits. Earth–Mars transfers take roughly 7–9 months.',
+  'UT': 'Universal Time — civil time at the prime meridian (UTC within ±0.9 s).',
+  'Lagrange interpolation': 'A polynomial fitted through neighbouring data points to estimate values between them.',
+};
