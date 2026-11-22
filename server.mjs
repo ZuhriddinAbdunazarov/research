@@ -76,7 +76,7 @@ async function serveStatic(url, res) {
   let rel = decodeURIComponent(url.pathname);
   if (rel.endsWith('/')) rel += 'index.html';
   const file = path.normalize(path.join(PUBLIC, rel));
-  if (!file.startsWith(PUBLIC)) { res.writeHead(403); return res.end('Forbidden'); }
+  if (file !== PUBLIC && !file.startsWith(PUBLIC + path.sep)) { res.writeHead(403); return res.end('Forbidden'); }
   try {
     const s = await stat(file);
     if (!s.isFile()) throw new Error('not a file');

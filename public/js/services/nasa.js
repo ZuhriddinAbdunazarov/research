@@ -32,6 +32,10 @@ function normalise(item) {
 }
 
 /** Search NASA images. Returns { items, totalHits, hasNext, query, retrievedAt }. */
+const ANAGLYPH = /\b3-?D\b|anaglyph|stereo|red-blue|3D glasses/i;
+const isAnaglyph = (i) => ANAGLYPH.test(i.title) || ANAGLYPH.test(i.description.slice(0, 400));
+const sortAnaglyphsLast = (items) => [...items.filter((i) => !isAnaglyph(i)), ...items.filter(isAnaglyph)];
+
 export async function searchImages(query, { page = 1, pageSize = 24, yearStart, signal } = {}) {
   const q = new URLSearchParams({ q: query, media_type: 'image', page: String(page), page_size: String(pageSize) });
   if (yearStart) q.set('year_start', String(yearStart));
@@ -39,7 +43,8 @@ export async function searchImages(query, { page = 1, pageSize = 24, yearStart, 
   const c = body?.collection;
   if (!c || !Array.isArray(c.items)) throw new ApiError('Unexpected response from the NASA Image Library.');
   return {
-    items: c.items.map(normalise).filter(Boolean),
+    // Red/blue anaglyph and stereo-pair images need 3-D glasses; keep them but list them last.
+    items: sortAnaglyphsLast(c.items.map(normalise).filter(Boolean)),
     totalHits: c.metadata?.total_hits ?? null,
     hasNext: Array.isArray(c.links) && c.links.some((l) => l.rel === 'next'),
     query,

@@ -111,7 +111,7 @@ export const MISSIONS = [
   {
     id: 'artemis', name: 'Artemis program', target: 'moon', agency: 'NASA (with international partners)', type: 'Crewed exploration', launch: '2022-11-16', status: 'unverified',
     objectives: 'Return humans to the Moon, explore the south polar region and prepare for missions to Mars.',
-    discoveries: ['Artemis I (launched 16 November 2022) flew an uncrewed Orion spacecraft around the Moon and splashed down on 11 December 2022.', 'Later Artemis missions add crews; see NASA for the current schedule.'],
+    discoveries: ['Artemis I (launched 16 November 2022) flew an uncrewed Orion spacecraft around the Moon and splashed down on 11 December 2022.', 'Artemis II flew four astronauts around the Moon in April 2026 — the first crewed lunar flight since Apollo 17 (1972).', 'Later missions aim to land crews near the lunar south pole; see NASA for the current schedule.'],
     link: 'https://www.nasa.gov/humans-in-space/artemis/', imageQuery: 'Artemis I SLS launch',
   },
 ];
