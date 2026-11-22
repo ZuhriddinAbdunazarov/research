@@ -22,7 +22,7 @@ Mars vs Moon comparison · NASA Missions · NASA Image Gallery · Analytics · D
 | Earth/Moon/Mars positions | JPL Horizons API (VECTORS, Sun-centred, ecliptic J2000/ICRF, km, geometric, UT) | `lib/horizons.mjs` → `/api/ephemeris` proxy (Horizons has no CORS) |
 | Offline fallback | Real Horizons daily vectors 2020–2035 (`public/data/ephemeris-snapshot.json`), 4-point Lagrange interpolation (measured error ≈ 30 km) | `public/js/services/ephemeris.js` |
 | Picture of the Day | NASA APOD (api.nasa.gov) | `lib/apod.mjs` → `/api/apod` (key stays server-side) |
-| Images | NASA Image and Video Library (images-api.nasa.gov, CORS, no key) | `public/js/services/nasa.js` |
+| Images | NASA Image and Video Library (images-api.nasa.gov, CORS, no key) | `public/js/services/nasa.js`; `/explorer/api/image` passes NASA pictures to the Mission Mars WebGL game (images-assets.nasa.gov only) |
 | Reference constants | NASA NSSDCA fact sheets, NASA Science pages | `public/js/data/*.js` (each value cites its source) |
 | Mars time / season | NASA GISS Mars24 algorithm | `public/js/services/marsTime.js` |
 
