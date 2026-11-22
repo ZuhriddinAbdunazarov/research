@@ -289,9 +289,20 @@ export async function render(el) {
       v.copy(pos).project(camera);
       const on = visible && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1;
       lab.style.display = on ? '' : 'none';
-      if (on) { lab.style.left = `${(v.x * 0.5 + 0.5) * w}px`; lab.style.top = `${(-v.y * 0.5 + 0.5) * h}px`; }
+      if (!on) return null;
+      const x = (v.x * 0.5 + 0.5) * w, y = (-v.y * 0.5 + 0.5) * h;
+      lab.style.left = `${x}px`; lab.style.top = `${y}px`;
+      return { x, y };
     };
-    for (const k of ['sun', 'earth', 'moon', 'mars']) place(labels[k], bodies[k].position, showLabels);
+    const scr = {};
+    for (const k of ['sun', 'earth', 'moon', 'mars']) scr[k] = place(labels[k], bodies[k].position, showLabels);
+    // Earth and Moon are only a few pixels apart at most zoom levels: when their centred labels
+    // would overlap, pin EARTH to one side and MOON to the side the Moon is actually on.
+    const se = scr.earth, sm = scr.moon;
+    const near = se && sm && Math.abs(se.x - sm.x) < 90 && Math.abs(se.y - sm.y) < 24;
+    const moonRight = near && sm.x >= se.x;
+    labels.earth.style.transform = near ? (moonRight ? 'translate(calc(-100% - 8px), -50%)' : 'translate(8px, -50%)') : '';
+    labels.moon.style.transform = near ? (moonRight ? 'translate(8px, -50%)' : 'translate(calc(-100% - 8px), -50%)') : '';
     if (current) {
       labels.mm.textContent = `${fmt(distance(current.bodies.mars, current.bodies.moon) / 1e6, 2)} M km`;
       place(labels.mm, moon.position.clone().lerp(mars.position, 0.5), showLabels);
