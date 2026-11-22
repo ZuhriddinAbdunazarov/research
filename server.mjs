@@ -10,6 +10,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getEphemeris, parseRequest, InputError, createCache } from './lib/horizons.mjs';
 import { getApod } from './lib/apod.mjs';
+import { getDonki, getInsight } from './lib/nasa.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(ROOT, 'public');
@@ -67,6 +68,14 @@ async function handleApi(url, res) {
       if (apodCache) return sendJson(res, 200, { ...apodCache.v, meta: { ...apodCache.v.meta, stale: true } });
       return sendJson(res, 502, { error: `NASA APOD unavailable: ${e.message}` });
     }
+  }
+  if (url.pathname === '/api/donki') {
+    try { return sendJson(res, 200, await getDonki(url.searchParams.get('type'), process.env.NASA_API_KEY)); }
+    catch (e) { return sendJson(res, 502, { error: `NASA DONKI unavailable: ${e.message}` }); }
+  }
+  if (url.pathname === '/api/insight') {
+    try { return sendJson(res, 200, await getInsight(process.env.NASA_API_KEY)); }
+    catch (e) { return sendJson(res, 502, { error: `NASA InSight weather unavailable: ${e.message}` }); }
   }
   if (url.pathname === '/api/health') return sendJson(res, 200, { ok: true, nasaKey: process.env.NASA_API_KEY ? 'personal' : 'DEMO_KEY' });
   return sendJson(res, 404, { error: 'Unknown API route.' });
