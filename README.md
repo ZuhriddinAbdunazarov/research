@@ -1,7 +1,7 @@
 # MARS × MOON — Interplanetary Scientific Data Explorer
 
 A scientific web platform about Mars and Earth's Moon built on authentic NASA / JPL data
-(NASA Space Apps Challenge). Part of the *Mission Mars* repository; it does not modify the Unity game or the handbook.
+(NASA Space Apps Challenge). Companion research site of [Mission Mars](https://github.com/ZuhriddinAbdunazarov/mission-mars): it is published at https://spacefrontier01.netlify.app/explorer/ and the game reads its REST API (`/explorer/api/ephemeris`) for live Earth–Mars distances.
 
 ## Run locally
 ```bash
